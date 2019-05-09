@@ -29,4 +29,4 @@ a.toFile().then(() => {
 	return a.run();
 }).then(() => {
 	console.log('done');
-});
+}).catch(console.log);

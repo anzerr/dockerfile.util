@@ -11,8 +11,10 @@ class Build {
 			new Dockerfile()
 		];
 		this.author = '';
-		this.name = 'Dockerfile';
+		this.dockerName = 'Dockerfile';
 		this.path = '.';
+		this.name = '';
+		this.version = 0;
 	}
 
 	package() {
@@ -44,14 +46,16 @@ class Build {
 
 	toFile() {
 		return this.toString().then((res) => {
-			return fs.writeFile(path.join(this.path, this.name), res);
+			return fs.writeFile(path.join(this.path, this.dockerName), res);
 		});
 	}
 
 	run() {
 		return this.toFile().then(() => this.info()).then((res) => {
-			let a = this.author.match(/\/$/) ? this.author : this.author + '/';
-			return util.exec(`docker build --no-cache -t ${a}${res.name}:${res.version} -f ${this.name} .`, {cwd: this.path});
+			let author = (this.author === '' || this.author.match(/\/$/)) ? this.author : this.author + '/',
+				version = this.version || res.version,
+				name = this.name || res.name;
+			return util.exec(`docker build --no-cache -t ${author}${name}:${version} -f ${this.dockerName} .`, {cwd: this.path});
 		});
 	}
 
