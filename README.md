@@ -20,7 +20,7 @@ class Busybox extends util.Build {
 
 	build() {
 		return super.build().then(() => {
-			this.dockerfile.build
+			this.dockerfile[0]
 				.run('echo "add a run command"')
 				.cmd('["sh"]');
 		});
