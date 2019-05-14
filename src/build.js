@@ -15,6 +15,7 @@ class Build {
 		this.path = '.';
 		this.name = '';
 		this.version = 0;
+		this.cache = false;
 	}
 
 	package() {
@@ -55,7 +56,7 @@ class Build {
 			let author = (this.author === '' || this.author.match(/\/$/)) ? this.author : this.author + '/',
 				version = this.version || res.version,
 				name = this.name || res.name;
-			return util.exec(`docker build --no-cache -t ${author}${name}:${version} -f ${this.dockerName} .`, {cwd: this.path});
+			return util.exec(`docker build ${!this.cache ? '--no-cache' : ''} -t ${author}${name}:${version} -f ${this.dockerName} .`, {cwd: this.path});
 		});
 	}
 

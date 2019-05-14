@@ -32,7 +32,13 @@ class Dockerfile {
 	}
 
 	env(e) {
-		this._env.push(e);
+		if (typeof e === 'object') {
+			for (let i in e) {
+				this._env.push(`${i}=${e[i]}`);
+			}
+		} else {
+			this._env.push(e);
+		}
 		return this;
 	}
 
