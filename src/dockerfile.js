@@ -22,7 +22,7 @@ class Dockerfile {
 	}
 
 	run(a) {
-		this._commands.push(`RUN ${Array.isArray(a) ? a.join(ENUM.JOIN) : a}`);
+		this._commands.push(`RUN ${Array.isArray(a) ? a.filter((a) => a.toString()).join(ENUM.JOIN) : a}`);
 		return this;
 	}
 
