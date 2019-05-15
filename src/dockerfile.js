@@ -5,7 +5,7 @@ class Dockerfile {
 
 	constructor() {
 		this._workdir = '';
-		this._cmd = '';
+		this._entrypoint = '';
 		this._commands = [];
 		this._env = [];
 		this._from = 'alpine:3.9';
@@ -43,7 +43,11 @@ class Dockerfile {
 	}
 
 	cmd(c) {
-		this._cmd = c;
+		return this.entrypoint(c);
+	}
+
+	entrypoint(c) {
+		this._entrypoint = c;
 		return this;
 	}
 
@@ -53,7 +57,7 @@ class Dockerfile {
 			this._env.map((a) => `ENV ${a}`).join('\n'),
 			this._commands.join('\n'),
 			(this._workdir) ? `WORKDIR ${this._workdir}` : '',
-			(this._cmd) ? `CMD ${this._cmd}` : ''
+			(this._entrypoint) ? `ENTRYPOINT ${this._entrypoint}` : ''
 		].filter((a) => a);
 		return flat.join('\n');
 	}
