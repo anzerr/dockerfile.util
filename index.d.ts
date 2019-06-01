@@ -1,7 +1,7 @@
 
 declare namespace docker {
 
-	declare class Dockerfile {
+	class Dockerfile {
 		public constructor();
 
 		public from(alias: string): Dockerfile;
@@ -22,7 +22,7 @@ declare namespace docker {
 
 	}
 
-	declare class Build {
+	class Build {
 
 		public dockerfile: Dockerfile[];
 		public author: string;
