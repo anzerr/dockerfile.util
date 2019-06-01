@@ -8,11 +8,11 @@ declare namespace docker {
 
 		public workdir(alias: string): Dockerfile;
 
-		public run(alias: string): Dockerfile;
+		public run(alias: string | string[]): Dockerfile;
 
 		public copy(alias: string): Dockerfile;
 
-		public env(alias: string): Dockerfile;
+		public env(alias: any): Dockerfile;
 
 		public cmd(alias: string): Dockerfile;
 
