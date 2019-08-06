@@ -4,7 +4,7 @@ util to script dockerfile creation
 
 #### `Install`
 ``` bash
-npm install --save git+https://git@github.com/anzerr/dockerfile.util.git
+npm install --save git+https://github.com/anzerr/dockerfile.util.git
 ```
 
 ### `Example`
