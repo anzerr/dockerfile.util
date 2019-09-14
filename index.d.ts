@@ -12,7 +12,9 @@ declare namespace docker {
 
 		public copy(alias: string): Dockerfile;
 
-		public env(alias: any): Dockerfile;
+		public env(alias: string | {[key: string]: string}): Dockerfile;
+
+		public arg(alias: string | string[]): Dockerfile;
 
 		public cmd(alias: string): Dockerfile;
 
