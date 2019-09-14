@@ -8,6 +8,7 @@ class Dockerfile {
 		this._entrypoint = '';
 		this._commands = [];
 		this._env = [];
+		this._arg = [];
 		this._from = 'alpine:3.9';
 	}
 
@@ -21,13 +22,27 @@ class Dockerfile {
 		return this;
 	}
 
-	run(a) {
-		this._commands.push(`RUN ${Array.isArray(a) ? a.filter((b) => b.toString()).join(ENUM.JOIN) : a}`);
+	push(key, arg) {
+		this._commands.push(`${key} ${arg}`);
 		return this;
 	}
 
+	run(a) {
+		return this.push('RUN', Array.isArray(a) ? a.filter((b) => b.toString()).join(ENUM.JOIN) : a);
+	}
+
 	copy(c) {
-		this._commands.push(`COPY ${c}`);
+		return this.push('COPY', c);
+	}
+
+	arg(e) {
+		if (typeof e === 'object') {
+			for (let i in e) {
+				this._arg.push(e[i]);
+			}
+		} else {
+			this._arg.push(e);
+		}
 		return this;
 	}
 
@@ -54,6 +69,7 @@ class Dockerfile {
 	toString() {
 		let flat = [
 			`FROM ${this._from}`,
+			this._arg.map((a) => `ARG ${a}`).join('\n'),
 			this._env.map((a) => `ENV ${a}`).join('\n'),
 			this._commands.join('\n'),
 			(this._workdir) ? `WORKDIR ${this._workdir}` : '',
