@@ -26,7 +26,5 @@ class Busybox extends util.Build {
 let a = new Busybox();
 
 a.toFile().then(() => {
-	return a.run();
-}).then(() => {
 	console.log('done');
 }).catch(console.log);

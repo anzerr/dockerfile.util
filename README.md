@@ -1,5 +1,7 @@
 
 ### `Intro`
+![GitHub Actions status | publish](https://github.com/anzerr/dockerfile.util./workflows/publish/badge.svg)
+
 util to script dockerfile creation
 
 #### `Install`
