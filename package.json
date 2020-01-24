@@ -1,6 +1,6 @@
 {
 	"name": "dockerfile.util",
-	"version": "1.0.11",
+	"version": "1.0.12",
 	"homepage": "https://github.com/anzerr/dockerfile.util#readme",
 	"bugs": {
 		"url": "https://github.com/anzerr/dockerfile.util/issues"
