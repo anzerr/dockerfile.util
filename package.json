@@ -1,6 +1,13 @@
 {
 	"name": "dockerfile.util",
 	"version": "1.0.12",
+	"description": "an util for scripting dockerfiles",
+	"keywords": [
+		"docker",
+		"dockerfile",
+		"nodejs",
+		"util"
+	],
 	"homepage": "https://github.com/anzerr/dockerfile.util#readme",
 	"bugs": {
 		"url": "https://github.com/anzerr/dockerfile.util/issues"
