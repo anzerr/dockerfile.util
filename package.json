@@ -1,6 +1,6 @@
 {
 	"name": "dockerfile.util",
-	"version": "1.0.16",
+	"version": "1.0.17",
 	"description": "an util for scripting dockerfiles",
 	"keywords": [
 		"docker",
